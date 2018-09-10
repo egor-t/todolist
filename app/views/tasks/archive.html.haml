@@ -1,0 +1,10 @@
+%h3 Завершенные задачи
+.table-responsive
+  %table.table
+    %thead.thead-dark
+      %tr
+        %th Задача
+    %tbody
+      - @tasks.each do |task| 
+        %tr
+          %td= task.title 

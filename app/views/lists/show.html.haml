@@ -1,0 +1,24 @@
+%h3= @list.title 
+%hr
+%section#team.pb-5
+  .container
+    = link_to 'Создать задачу', new_list_task_path(@list), class: 'btn btn-primary btn-sm'
+    %h5.section-title.h1 Все задачи
+    .row
+      - @list.tasks.active.each do |task|
+        .col-xs-12.col-sm-6.col-md-4
+          .image-flip{:ontouchstart => "this.classList.toggle('hover');"}
+            .mainflip
+              .frontside
+                .card
+                  .card-body.text-center
+                    %h4.card-title Название задачи
+                    %p.card-text= task.title
+              .backside
+                .card
+                  .card-body.text-center.mt-4
+                    %h4.card-title Описание задачи
+                    %p.card-text= task.description
+                    %a.btn.btn-primary.btn-sm
+                      %i.fa.fa-plus
+                    = link_to('Завершить задачу', list_complete_task_path(@list, task), method: :put)

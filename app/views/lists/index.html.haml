@@ -1,0 +1,15 @@
+%h3 Доступные списки
+.table-responsive
+  %table.table
+    %thead.thead-dark
+      %tr
+        %th Название списка
+        %th Настройки
+    %tbody
+      - @lists.each do |list| 
+        %tr
+          %td= list.title 
+          %td
+            = link_to 'Открыть', list_path(list)
+            = link_to 'Изменить', edit_list_path(list)
+            = link_to 'Удалить', list_path(list), method: :delete, data: { confirm: 'Вы хотите удалить список?' }

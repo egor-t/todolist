@@ -1,6 +1,8 @@
 // import the CSS framework
 // Do not use *= require in Sass or your other stylesheets will not be able to access the Bootstrap mixins and variables.
 @import "bootstrap";
+@import "./navigation.css.scss";
+@import "./tasks.scss";
 
 // make all images responsive by default
 img {
@@ -10,7 +12,7 @@ img {
 // override for the 'Home' navigation link
 .navbar-brand {
   font-size: inherit;
-  }
+}
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
 // create your own classes
@@ -81,3 +83,5 @@ section {
   @extend .btn-primary;
   @extend .btn-sm;
 }
+
+//
