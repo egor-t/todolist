@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  root to: 'visitors#index'
+  root to: "lists#index"
+  
   devise_for :users
-  resources :users
+  # resources :users
   resources :lists do
     resources :tasks
     put 'complete/:id', to: 'tasks#complete', as: :complete_task
