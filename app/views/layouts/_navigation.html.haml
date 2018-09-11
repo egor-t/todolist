@@ -1,8 +1,10 @@
 #myTopnav.topnav
-  - if user_signed_in?
+  - if user_signed_in? 
+    = link_to 'Входящие', all_tasks_path
+    = link_to 'Задачи на сегодня', today_tasks_path
+    = link_to 'Все завершенные задачи', archived_tasks_path
     = link_to 'Все списки', lists_path
-    = link_to 'Новый список', new_list_path
-    = link_to 'Все завершенные задачи', archived_task_path
+    = link_to 'Добавить список', new_list_path
     = link_to 'Выйти', destroy_user_session_path, method: :delete
   - else
     = link_to 'Войти', new_user_session_path

@@ -21,4 +21,4 @@
                     %p.card-text= task.description
                     %a.btn.btn-primary.btn-sm
                       %i.fa.fa-plus
-                    = link_to('Завершить задачу', list_complete_task_path(@list, task), method: :put)
+                    = link_to('Завершить задачу', complete_task_path(task), method: :put)

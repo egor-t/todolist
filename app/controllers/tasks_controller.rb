@@ -2,9 +2,9 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy complete]
   before_action :set_list, only: %i[new create update complete]
 
-  # def index
-  #   @tasks = Task.all
-  # end
+  def index
+    @tasks = Task.all
+  end
 
   def new
     @list = current_user.lists.find(params[:list_id])
@@ -45,6 +45,10 @@ class TasksController < ApplicationController
 
   def archive
     @tasks = Task.archived
+  end
+
+  def today
+    @tasks = Task.today
   end
   
   private

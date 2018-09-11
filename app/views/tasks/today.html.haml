@@ -1,0 +1,4 @@
+%h5.section-title.h1 Все задачи сегодня
+.row
+  - @tasks.active.each do |task|
+    = render partial: 'task', locals: {task: task}

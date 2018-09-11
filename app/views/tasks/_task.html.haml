@@ -5,11 +5,11 @@
         .card
           .card-body.text-center
             %h4.card-title Название задачи
-            %p.card-text This is basic card with image on top, title, description and button.
-            %a.btn.btn-primary.btn-sm{:href => "#"}
-              %i.fa.fa-plus
+            %p.card-text= task.title
       .backside
         .card
           .card-body.text-center.mt-4
             %h4.card-title Описание задачи
-            %p.card-text This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.
+            %p.card-text= task.description
+            %a.btn.btn-primary.btn-sm
+            = link_to('Завершить задачу', complete_task_path(task), method: :put)
