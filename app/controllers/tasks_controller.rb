@@ -1,9 +1,10 @@
 class TasksController < ApplicationController
+  include TasksHelper
   before_action :set_task, only: %i[show edit update destroy complete]
-  before_action :set_list, only: %i[new create update complete]
+  before_action :set_list, only: %i[create]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.active
   end
 
   def new
@@ -15,7 +16,7 @@ class TasksController < ApplicationController
     @task = @list.tasks.build(task_params)
     if @task.save
       flash[:notice] = 'Успешно cоздали задачу.'
-      redirect_to list_path @list
+      redirect_to all_tasks_path
     else
       render :new
     end
@@ -26,21 +27,24 @@ class TasksController < ApplicationController
   def edit; end
 
   def update
-    @task.update(task_params)
-    flash[:notice] = 'Успешно обновили задачу.'
-    redirect_to list_tasks_path
+    if @task.update(task_params)
+      flash[:notice] = 'Успешно обновили задачу.'
+      redirect_to all_tasks_path
+    else
+      render :edit
+    end
   end
   
   def destroy
     @task.destroy
 
-    redirect_to list_tasks_path
+    redirect_to all_tasks_path
   end
 
   def complete
     @task.update_attribute(:status, true)
     flash[:notice] = 'Задача завершена.'
-    redirect_to list_path @list
+    redirect_to all_tasks_path
   end
 
   def archive

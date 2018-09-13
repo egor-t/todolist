@@ -6,10 +6,15 @@
           .card-body.text-center
             %h4.card-title Название задачи
             %p.card-text= task.title
+            %hr
+            = define_day(task.date)
       .backside
         .card
           .card-body.text-center.mt-4
             %h4.card-title Описание задачи
-            %p.card-text= task.description
-            %a.btn.btn-primary.btn-sm
+            %p.card-text= task.description.truncate(50)
+            %br
+            %hr
             = link_to('Завершить задачу', complete_task_path(task), method: :put)
+            %br
+            = link_to('Изменить задачу', edit_task_path(task))

@@ -1,0 +1,7 @@
+%h3 Редкатируем задачу
+= simple_form_for @task, html: { class: 'form-horizontal' } do |f|
+  = f.error_notification
+  = f.input :title, placeholder: 'Введите название задачи'
+  = f.text_area :description, placeholder: 'Введите описание задачи'
+  = f.input :date
+  = f.submit 'Обновить задачу'
