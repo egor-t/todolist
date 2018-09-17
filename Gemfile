@@ -36,6 +36,7 @@ group :development do
   gem 'rb-fsevent', :require=>false
   gem 'rb-inotify', :require=>false
   gem 'spring-commands-rspec'
+  gem 'binding_of_caller'
 end
 
 group :test do

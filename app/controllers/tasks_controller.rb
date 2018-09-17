@@ -1,20 +1,20 @@
 class TasksController < ApplicationController
   include TasksHelper
   before_action :set_task, only: %i[show edit update destroy complete]
-  before_action :set_list, only: %i[create]
+  before_action :set_list, only: %i[create new]
 
   def index
     @tasks = Task.active
   end
 
   def new
-    @list = current_user.lists.find(params[:list_id])
+    # @list = current_user.lists.find(params[:list_id])
     @task = Task.new
   end
 
   def create
-    @task = @list.tasks.build(task_params)
-    if @task.save
+    @task = @list.tasks.create(task_params)
+    if @task.valid?
       flash[:notice] = 'Успешно cоздали задачу.'
       redirect_to all_tasks_path
     else

@@ -19,6 +19,6 @@
                   .card-body.text-center.mt-4
                     %h4.card-title Описание задачи
                     %p.card-text= task.description
-                    %a.btn.btn-primary.btn-sm
-                      %i.fa.fa-plus
+                    %br
+                    %hr
                     = link_to('Завершить задачу', complete_task_path(task), method: :put)

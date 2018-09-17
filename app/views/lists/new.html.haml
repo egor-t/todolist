@@ -1,6 +1,4 @@
-%h3 Создание списка
-%hr
 = simple_form_for @list do |f|
-  = f.label :title, "Название списка"
-  = f.input_field :title
-  = f.submit "Сохранить"
+  = f.error_notification
+  = f.input :title
+  = f.submit
